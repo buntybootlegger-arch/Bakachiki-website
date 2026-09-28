@@ -26,10 +26,12 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter());
   app.setGlobalPrefix("api");
 
-  const port = process.env.API_PORT ?? 4000;
+  // Render (and most PaaS hosts) assign the port via `PORT` and route
+  // traffic only to that port — API_PORT stays as the local/custom override.
+  const port = process.env.PORT ?? process.env.API_PORT ?? 4000;
   await app.listen(port);
   // eslint-disable-next-line no-console
-  console.log(`API listening on http://localhost:${port}/api`);
+  console.log(`API listening on port ${port} (prefix: /api)`);
 }
 
 bootstrap();
