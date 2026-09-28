@@ -123,7 +123,7 @@ full theme system (fonts/layout are still code-level, per the plan's explicit sc
 - Optional 3D/TresJS section for the homepage builder
 - Full test suite (e2e for checkout/payments/webhooks, component tests for the storefront)
 - CI/CD pipeline
-- Production deployment: Vercel/Netlify (web), Render (api + Postgres), Cloudinary (media)
+- Production deployment — ✅ done ahead of schedule: Vercel (web), Render (api), Supabase (Postgres — chosen over Render's Postgres specifically to avoid its free-tier 30-day database expiry), Cloudinary (media). See README.md's "Production / demo deployment" section for the full setup + troubleshooting log.
 
 ## Architecture notes for future phases (don't re-derive these)
 
