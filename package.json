@@ -1,0 +1,20 @@
+{
+  "name": "bakachiki-ecommerce",
+  "private": true,
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "postinstall": "pnpm --filter @bakachiki/shared build",
+    "build:shared": "pnpm --filter @bakachiki/shared build",
+    "dev:api": "pnpm --filter @bakachiki/api start:dev",
+    "dev:web": "pnpm --filter @bakachiki/web dev",
+    "build:api": "pnpm --filter @bakachiki/api build",
+    "build:web": "pnpm --filter @bakachiki/web build",
+    "prisma:generate": "pnpm --filter @bakachiki/api prisma generate",
+    "prisma:migrate": "pnpm --filter @bakachiki/api prisma migrate dev",
+    "prisma:seed": "pnpm --filter @bakachiki/api prisma db seed",
+    "test:api": "pnpm --filter @bakachiki/api test"
+  }
+}

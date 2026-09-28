@@ -1,0 +1,111 @@
+/**
+ * Canonical list of permission strings enforced by the API's PermissionsGuard.
+ * Format: "<resource>:<action>". Keep in sync with prisma/seed.ts.
+ */
+export const PERMISSIONS = [
+  "products:read",
+  "products:write",
+  "categories:read",
+  "categories:write",
+  "brands:read",
+  "brands:write",
+  "inventory:read",
+  "inventory:write",
+  "orders:read",
+  "orders:write",
+  "customers:read",
+  "customers:write",
+  "coupons:read",
+  "coupons:write",
+  "media:read",
+  "media:write",
+  "cms:read",
+  "cms:write",
+  "pages:read",
+  "pages:write",
+  "collections:read",
+  "collections:write",
+  "campaigns:read",
+  "campaigns:write",
+  "lookbooks:read",
+  "lookbooks:write",
+  "blog:read",
+  "blog:write",
+  "seo:read",
+  "seo:write",
+  "shipping:read",
+  "shipping:write",
+  "payments:read",
+  "payments:write",
+  "analytics:read",
+  "settings:read",
+  "settings:write",
+  "admins:read",
+  "admins:write",
+  "roles:read",
+  "roles:write",
+] as const;
+
+export type Permission = (typeof PERMISSIONS)[number];
+
+export const ROLE_NAMES = [
+  "SUPER_ADMIN",
+  "PRODUCT_ADMIN",
+  "ORDER_ADMIN",
+  "CONTENT_ADMIN",
+  "MARKETING_ADMIN",
+  "SEO_ADMIN",
+] as const;
+
+export type RoleName = (typeof ROLE_NAMES)[number];
+
+/** Default permission grants per seeded role. SUPER_ADMIN gets every permission. */
+export const DEFAULT_ROLE_PERMISSIONS: Record<RoleName, Permission[]> = {
+  SUPER_ADMIN: [...PERMISSIONS],
+  PRODUCT_ADMIN: [
+    "products:read",
+    "products:write",
+    "categories:read",
+    "categories:write",
+    "brands:read",
+    "brands:write",
+    "inventory:read",
+    "inventory:write",
+    "media:read",
+    "media:write",
+  ],
+  ORDER_ADMIN: [
+    "orders:read",
+    "orders:write",
+    "customers:read",
+    "customers:write",
+    "payments:read",
+    "shipping:read",
+    "coupons:read",
+  ],
+  CONTENT_ADMIN: [
+    "cms:read",
+    "cms:write",
+    "pages:read",
+    "pages:write",
+    "lookbooks:read",
+    "lookbooks:write",
+    "blog:read",
+    "blog:write",
+    "media:read",
+    "media:write",
+  ],
+  MARKETING_ADMIN: [
+    "coupons:read",
+    "coupons:write",
+    "collections:read",
+    "collections:write",
+    "campaigns:read",
+    "campaigns:write",
+    "analytics:read",
+    "media:read",
+    "shipping:read",
+    "shipping:write",
+  ],
+  SEO_ADMIN: ["seo:read", "seo:write", "cms:read"],
+};
